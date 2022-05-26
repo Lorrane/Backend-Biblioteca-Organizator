@@ -1,23 +1,37 @@
 package br.com.ra.biblioteca_organizator.entities;
 
+import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
-import javax.xml.crypto.Data;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
-public class Livros {
+@Entity
+@Table(name = "tbl_books")
+public class Livros implements Serializable {
+
+    @Id
     private int isbn;
     private String title;
     private String subtitle;
     private String author;
     private String publishing;
-    private Data year;
-    private List<Genrer> genrers;
+    private Date year;
+    @ManyToMany
+    @JoinTable(name = "tbl_genrers_book", joinColumns = { @JoinColumn(name = "book_id") }, inverseJoinColumns = {
+            @JoinColumn(name = "genrers_id") })
+    private List<Genrers> genrers;
 
     public Livros() {
     }
 
-    public Livros(int isbn, String title, String subtitle, String author, String publishing, List<Genrer> genrers,
-            Data year) {
+    public Livros(int isbn, String title, String subtitle, String author, String publishing, List<Genrers> genrers,
+            Date year) {
         this.isbn = isbn;
         this.title = title;
         this.subtitle = subtitle;
@@ -67,19 +81,19 @@ public class Livros {
         this.publishing = publishing;
     }
 
-    public Data getYear() {
+    public Date getYear() {
         return year;
     }
 
-    public void setYear(Data year) {
+    public void setYear(Date year) {
         this.year = year;
     }
 
-    public List<Genrer> getGenrers() {
+    public List<Genrers> getGenrers() {
         return genrers;
     }
 
-    public void setGenrers(List<Genrer> genrers) {
+    public void setGenrers(List<Genrers> genrers) {
         this.genrers = genrers;
     }
 
