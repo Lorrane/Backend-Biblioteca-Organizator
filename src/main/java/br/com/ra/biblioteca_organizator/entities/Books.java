@@ -2,13 +2,9 @@ package br.com.ra.biblioteca_organizator.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -22,22 +18,22 @@ public class Books implements Serializable {
     private String author;
     private String publishing;
     private Date year;
-    @ManyToMany
-    @JoinTable(name = "tbl_genrers_book", joinColumns = { @JoinColumn(name = "book_id") }, inverseJoinColumns = {
-            @JoinColumn(name = "genrers_id") })
-    private List<Genrers> genrers;
 
     public Books() {
     }
 
-    public Books(int isbn, String title, String subtitle, String author, String publishing, List<Genrers> genrers,
+    public Books(
+            int isbn,
+            String title,
+            String subtitle,
+            String author,
+            String publishing,
             Date year) {
         this.isbn = isbn;
         this.title = title;
         this.subtitle = subtitle;
         this.author = author;
         this.publishing = publishing;
-        this.genrers = genrers;
         this.year = year;
     }
 
@@ -87,14 +83,6 @@ public class Books implements Serializable {
 
     public void setYear(Date year) {
         this.year = year;
-    }
-
-    public List<Genrers> getGenrers() {
-        return genrers;
-    }
-
-    public void setGenrers(List<Genrers> genrers) {
-        this.genrers = genrers;
     }
 
 }

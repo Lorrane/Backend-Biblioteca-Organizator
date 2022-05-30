@@ -1,10 +1,8 @@
 package br.com.ra.biblioteca_organizator.dto;
 
 import java.util.Date;
-import java.util.List;
 
 import br.com.ra.biblioteca_organizator.entities.Books;
-import br.com.ra.biblioteca_organizator.entities.Genrers;
 
 public class BooksDTO {
 
@@ -14,20 +12,17 @@ public class BooksDTO {
     private String author;
     private String publishing;
     private Date year;
-    private List<Genrers> genrers;
 
     public BooksDTO() {
     }
 
-    public BooksDTO(int isbn, String title, String subtitle, String author, String publishing, Date year,
-            List<Genrers> genrers) {
+    public BooksDTO(int isbn, String title, String subtitle, String author, String publishing, Date year) {
         this.isbn = isbn;
         this.subtitle = subtitle;
         this.title = title;
         this.author = author;
         this.publishing = publishing;
         this.year = year;
-        this.genrers = genrers;
     }
 
     public BooksDTO(Books book) {
@@ -37,7 +32,6 @@ public class BooksDTO {
         author = book.getAuthor();
         publishing = book.getPublishing();
         year = book.getYear();
-        genrers = book.getGenrers();
     }
 
     public int getIsbn() {
@@ -86,14 +80,6 @@ public class BooksDTO {
 
     public void setYear(Date year) {
         this.year = year;
-    }
-
-    public List<Genrers> getGenrers() {
-        return genrers;
-    }
-
-    public void setGenrers(List<Genrers> genrers) {
-        this.genrers = genrers;
     }
 
 }
