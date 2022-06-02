@@ -31,11 +31,11 @@ public class Genrers {
         this.id = id;
     }
 
-    public String getgenrer() {
+    public String getGenrer() {
         return genrer;
     }
 
-    public void setgenrer(String genrer) {
+    public void setGenrer(String genrer) {
         this.genrer = genrer;
     }
 

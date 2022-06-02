@@ -11,7 +11,7 @@ public class BooksDTO {
     private String subtitle;
     private String author;
     private String publishing;
-    private Date year;
+    private Date yearPubli;
 
     public BooksDTO() {
     }
@@ -22,7 +22,7 @@ public class BooksDTO {
         this.title = title;
         this.author = author;
         this.publishing = publishing;
-        this.year = year;
+        this.yearPubli = year;
     }
 
     public BooksDTO(Books book) {
@@ -31,7 +31,7 @@ public class BooksDTO {
         subtitle = book.getSubtitle();
         author = book.getAuthor();
         publishing = book.getPublishing();
-        year = book.getYear();
+        yearPubli = book.getYearPubli();
     }
 
     public int getIsbn() {
@@ -74,12 +74,12 @@ public class BooksDTO {
         this.title = title;
     }
 
-    public Date getYear() {
-        return year;
+    public Date getYearPubli() {
+        return yearPubli;
     }
 
-    public void setYear(Date year) {
-        this.year = year;
+    public void setYearPubli(Date year) {
+        this.yearPubli = year;
     }
 
 }

@@ -1,8 +1,8 @@
 package br.com.ra.biblioteca_organizator.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,11 +21,11 @@ public class GenrersController {
     GenrersServices services;
 
     @GetMapping
-    public Page<GenrersDTO> findAll(Pageable pageable) {
-        return services.findAll(pageable);
+    public List<GenrersDTO> findAll() {
+        return services.findAll();
     }
 
-    @GetMapping
+    @GetMapping(value = "/{id}")
     public GenrersDTO findById(Long id) {
         return services.findById(id);
     }

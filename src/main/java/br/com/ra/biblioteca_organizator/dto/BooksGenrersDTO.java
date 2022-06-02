@@ -1,39 +1,51 @@
 package br.com.ra.biblioteca_organizator.dto;
 
+import br.com.ra.biblioteca_organizator.entities.Books;
 import br.com.ra.biblioteca_organizator.entities.BooksGenrers;
+import br.com.ra.biblioteca_organizator.entities.Genrers;
 
 public class BooksGenrersDTO {
 
-    private Integer book_id;
-    private Long genrer_id;
+    private Long id;
+    private Books books;
+    private Genrers genrers;
 
     public BooksGenrersDTO() {
 
     }
 
-    public BooksGenrersDTO(Integer book_id, Long genrer_id) {
-        this.book_id = book_id;
-        this.genrer_id = genrer_id;
+    public BooksGenrersDTO(Books books, Genrers genrers) {
+        this.books = books;
+        this.genrers = genrers;
     }
 
     public BooksGenrersDTO(BooksGenrers bg) {
-        this.book_id = bg.getBookId();
-        this.genrer_id = bg.getGenrerId();
+        this.id = bg.getId();
+        this.books = bg.getBooks();
+        this.genrers = bg.getGenrers();
     }
 
-    public Integer getBookId() {
-        return book_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setBookId(Integer book_id) {
-        this.book_id = book_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Long getGenrerId() {
-        return genrer_id;
+    public Books getBooks() {
+        return books;
     }
 
-    public void setGenrerId(Long genrer_id) {
-        this.genrer_id = genrer_id;
+    public void setBooks(Books books) {
+        this.books = books;
+    }
+
+    public Genrers getGenrers() {
+        return genrers;
+    }
+
+    public void setGenrers(Genrers genrers) {
+        this.genrers = genrers;
     }
 }

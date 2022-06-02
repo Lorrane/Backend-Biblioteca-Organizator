@@ -12,7 +12,7 @@ public class GenrersDTO {
 
     public GenrersDTO(Genrers genrers) {
         id = genrers.getId();
-        genrer = genrers.getgenrer();
+        genrer = genrers.getGenrer();
     }
 
     public GenrersDTO(Long id, String genrer) {

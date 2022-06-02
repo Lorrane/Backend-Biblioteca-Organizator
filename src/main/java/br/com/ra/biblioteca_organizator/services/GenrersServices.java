@@ -1,11 +1,11 @@
 package br.com.ra.biblioteca_organizator.services;
 
-import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.ra.biblioteca_organizator.dto.GenrersDTO;
 import br.com.ra.biblioteca_organizator.entities.Genrers;
@@ -17,14 +17,20 @@ public class GenrersServices {
     @Autowired
     private GenrersRepository repository;
 
-    @Transactional
-    public Page<GenrersDTO> findAll(Pageable pageable) {
-        Page<Genrers> result = repository.findAll(pageable);
-        Page<GenrersDTO> page = result.map(x -> new GenrersDTO(x));
-        return page;
+    @Transactional(readOnly = true)
+    public List<GenrersDTO> findAll() {
+        List<Genrers> result = repository.findAll();
+        List<GenrersDTO> list = new ArrayList<GenrersDTO>();
+
+        for (Genrers genrer : result) {
+            GenrersDTO dto = new GenrersDTO(genrer);
+            list.add(dto);
+        }
+        return list;
+
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public GenrersDTO findById(Long id) {
         Genrers result = repository.findById(id).get();
         GenrersDTO dto = new GenrersDTO(result);

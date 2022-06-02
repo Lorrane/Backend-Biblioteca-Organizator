@@ -1,5 +1,7 @@
 package br.com.ra.biblioteca_organizator.repositories;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.ra.biblioteca_organizator.entities.Books;
@@ -8,12 +10,12 @@ public interface BooksRepository extends JpaRepository<Books, Integer> {
 
     Books findByIsbn(Integer isbn);
 
-    Books findByTitle(String title);
+    List<Books> findByTitle(String title);
 
-    Books findBySubtitle(String subtitle);
+    List<Books> findBySubtitle(String subtitle);
 
-    Books findByAuthor(String author);
+    List<Books> findByAuthor(String author);
 
-    Books findByPubliching(String publishing);
+    List<Books> findByPublishing(String publishing);
 
 }

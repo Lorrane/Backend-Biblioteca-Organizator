@@ -1,45 +1,61 @@
 package br.com.ra.biblioteca_organizator.entities;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tbl_book_genrers")
-public class BooksGenrers {
+@Table(name = "tbl_book_genrer")
+public class BooksGenrers implements Serializable {
 
-    @JoinColumn(name = "book_id")
-    @ManyToMany
-    private Integer book_id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "Genrer_id")
-    private Long genrer_id;
+    @JoinColumn(name = "book_id")
+    private Books books;
+
+    @ManyToOne
+    @JoinColumn(name = "genrer_id")
+    private Genrers genrers;
 
     public BooksGenrers() {
 
     }
 
-    public BooksGenrers(Integer book_id, Long genrer_id) {
-        this.book_id = book_id;
-        this.genrer_id = genrer_id;
+    public BooksGenrers(Books books, Genrers genrers) {
+        this.books = books;
+        this.genrers = genrers;
     }
 
-    public Integer getBookId() {
-        return book_id;
+    public Long getId() {
+        return id;
     }
 
-    public void setBookId(Integer book_id) {
-        this.book_id = book_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Long getGenrerId() {
-        return genrer_id;
+    public Books getBooks() {
+        return books;
     }
 
-    public void setGenrerId(Long genrer_id) {
-        this.genrer_id = genrer_id;
+    public void setBookId(Books books) {
+        this.books = books;
+    }
+
+    public Genrers getGenrers() {
+        return genrers;
+    }
+
+    public void setGenrer(Genrers genrers) {
+        this.genrers = genrers;
     }
 }

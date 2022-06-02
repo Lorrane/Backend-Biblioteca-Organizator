@@ -2,10 +2,15 @@ package br.com.ra.biblioteca_organizator.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import br.com.ra.biblioteca_organizator.dto.BooksDTO;
 
 @Entity
 @Table(name = "tbl_books")
@@ -17,9 +22,21 @@ public class Books implements Serializable {
     private String subtitle;
     private String author;
     private String publishing;
-    private Date year;
+    private Date yearPubli;
+
+    @OneToMany(mappedBy = "books")
+    private Set<BooksGenrers> genrers = new HashSet<>();
 
     public Books() {
+    }
+
+    public Books(BooksDTO dto) {
+        this.isbn = dto.getIsbn();
+        this.title = dto.getTitle();
+        this.subtitle = dto.getSubtitle();
+        this.author = dto.getAuthor();
+        this.publishing = dto.getPublishing();
+        this.yearPubli = dto.getYearPubli();
     }
 
     public Books(
@@ -28,13 +45,13 @@ public class Books implements Serializable {
             String subtitle,
             String author,
             String publishing,
-            Date year) {
+            Date yearPubli) {
         this.isbn = isbn;
         this.title = title;
         this.subtitle = subtitle;
         this.author = author;
         this.publishing = publishing;
-        this.year = year;
+        this.yearPubli = yearPubli;
     }
 
     public int getIsbn() {
@@ -77,12 +94,16 @@ public class Books implements Serializable {
         this.publishing = publishing;
     }
 
-    public Date getYear() {
-        return year;
+    public Date getYearPubli() {
+        return yearPubli;
     }
 
-    public void setYear(Date year) {
-        this.year = year;
+    public void setYearPubli(Date yearPubli) {
+        this.yearPubli = yearPubli;
+    }
+
+    public Set<BooksGenrers> getGenrers() {
+        return genrers;
     }
 
 }

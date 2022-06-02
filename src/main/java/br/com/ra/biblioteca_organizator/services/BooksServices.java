@@ -1,8 +1,9 @@
 package br.com.ra.biblioteca_organizator.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,17 +17,21 @@ public class BooksServices {
     @Autowired
     private BooksRepository repository;
 
-    @Transactional(readOnly = true)
-    // public List<BooksDTO> findAll() {
-    // List<Books> result = repository.findAll();
-    // List<BooksDTO> page = (List<BooksDTO>) result.iterator()
+    // public Page<BooksDTO> findAll(Pageable pageable) {
+    // Page<Books> result = repository.findAll(pageable);
+    // Page<BooksDTO> page = result.map(x -> new BooksDTO(x));
+    // return page;
     // }
 
-    // Chamada para busca paginada
-    public Page<BooksDTO> findAll(Pageable pageable) {
-        Page<Books> result = repository.findAll(pageable);
-        Page<BooksDTO> page = result.map(x -> new BooksDTO(x));
-        return page;
+    @Transactional(readOnly = true)
+    public List<BooksDTO> findAll() {
+        List<Books> result = repository.findAll();
+        List<BooksDTO> list = new ArrayList<BooksDTO>();
+        for (Books book : result) {
+            BooksDTO dto = new BooksDTO(book);
+            list.add(dto);
+        }
+        return list;
     }
 
     @Transactional(readOnly = true)
@@ -37,10 +42,58 @@ public class BooksServices {
     }
 
     @Transactional(readOnly = true)
-    public BooksDTO findByTitle(String title) {
-        Books result = repository.findByTitle(title);
-        BooksDTO dto = new BooksDTO(result);
-        return dto;
+    public List<BooksDTO> findByTitle(String title) {
+        List<Books> result = repository.findByTitle(title);
+        List<BooksDTO> list = new ArrayList<BooksDTO>();
+        for (Books book : result) {
+            BooksDTO dto = new BooksDTO(book);
+            list.add(dto);
+        }
+        return list;
+    }
+
+    @Transactional(readOnly = true)
+    public List<BooksDTO> findBySubtitle(String subtitle) {
+        List<Books> result = repository.findBySubtitle(subtitle);
+        List<BooksDTO> list = new ArrayList<BooksDTO>();
+        for (Books book : result) {
+            BooksDTO dto = new BooksDTO(book);
+            list.add(dto);
+        }
+        return list;
+    }
+
+    @Transactional(readOnly = true)
+    public List<BooksDTO> findByAuthor(String author) {
+        List<Books> result = repository.findByAuthor(author);
+        List<BooksDTO> list = new ArrayList<BooksDTO>();
+        for (Books book : result) {
+            BooksDTO dto = new BooksDTO(book);
+            list.add(dto);
+        }
+        return list;
+    }
+
+    @Transactional(readOnly = true)
+    public List<BooksDTO> findByPublishing(String publishing) {
+        List<Books> result = repository.findByPublishing(publishing);
+        List<BooksDTO> list = new ArrayList<BooksDTO>();
+        for (Books book : result) {
+            BooksDTO dto = new BooksDTO(book);
+            list.add(dto);
+        }
+        return list;
+    }
+
+    @Transactional
+    public BooksDTO saveBook(BooksDTO dto) {
+        Books books = repository.findByIsbn(dto.getIsbn());
+
+        if (books == null) {
+            books = new Books(dto);
+            repository.save(books);
+        }
+        return new BooksDTO(books);
     }
 
 }

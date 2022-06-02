@@ -1,10 +1,12 @@
 package br.com.ra.biblioteca_organizator.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,8 +21,8 @@ public class BooksController {
     private BooksServices services;
 
     @GetMapping
-    public Page<BooksDTO> findAll(Pageable pageable) {
-        return services.findAll(pageable);
+    public List<BooksDTO> findAll() {
+        return services.findAll();
     }
 
     @GetMapping(value = "/{isbn}")
@@ -29,8 +31,30 @@ public class BooksController {
     }
 
     @GetMapping(value = "/{title}")
-    public BooksDTO findByTitle(@PathVariable String title) {
+    public List<BooksDTO> findByTitle(@PathVariable String title) {
         return services.findByTitle(title);
+    }
+
+    @GetMapping(value = "/{subtitle}")
+    public List<BooksDTO> findBySubtitle(@PathVariable String subtitle) {
+        return services.findBySubtitle(subtitle);
+    }
+
+    @GetMapping(value = "/{author}")
+    public List<BooksDTO> findByAuthor(@PathVariable String author) {
+        return services.findByAuthor(author);
+    }
+
+    @GetMapping(value = "/{publishing}")
+    public List<BooksDTO> findByPublishing(@PathVariable String publishing) {
+        return services.findByPublishing(publishing);
+    }
+
+    @PutMapping
+    public BooksDTO saveBooks(@RequestBody BooksDTO books) {
+        BooksDTO dto = services.saveBook(books);
+        return dto;
+
     }
 
 }
