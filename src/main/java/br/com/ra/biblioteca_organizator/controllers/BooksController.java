@@ -30,22 +30,22 @@ public class BooksController {
         return services.findByIsbn(isbn);
     }
 
-    @GetMapping(value = "/{title}")
+    @GetMapping(value = "/title/{title}")
     public List<BooksDTO> findByTitle(@PathVariable String title) {
         return services.findByTitle(title);
     }
 
-    @GetMapping(value = "/{subtitle}")
+    @GetMapping(value = "/subtitle/{subtitle}")
     public List<BooksDTO> findBySubtitle(@PathVariable String subtitle) {
         return services.findBySubtitle(subtitle);
     }
 
-    @GetMapping(value = "/{author}")
+    @GetMapping(value = "/author/{author}")
     public List<BooksDTO> findByAuthor(@PathVariable String author) {
         return services.findByAuthor(author);
     }
 
-    @GetMapping(value = "/{publishing}")
+    @GetMapping(value = "/publishing/{publishing}")
     public List<BooksDTO> findByPublishing(@PathVariable String publishing) {
         return services.findByPublishing(publishing);
     }
