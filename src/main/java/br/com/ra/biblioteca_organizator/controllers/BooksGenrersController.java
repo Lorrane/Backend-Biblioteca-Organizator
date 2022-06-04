@@ -19,7 +19,7 @@ public class BooksGenrersController {
     @Autowired
     BooksGenrersRepository repository;
 
-    @GetMapping(value = "/{book}"
+    @GetMapping(value = "/{book}")
     public List<BooksGenrers> findByBook(Books books) {
         return repository.findByBooks(books);
     }
