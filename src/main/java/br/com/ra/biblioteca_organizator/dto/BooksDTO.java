@@ -6,7 +6,7 @@ import br.com.ra.biblioteca_organizator.entities.Books;
 
 public class BooksDTO {
 
-    private int isbn;
+    private long isbn;
     private String title;
     private String subtitle;
     private String author;
@@ -16,7 +16,7 @@ public class BooksDTO {
     public BooksDTO() {
     }
 
-    public BooksDTO(int isbn, String title, String subtitle, String author, String publishing, Date year) {
+    public BooksDTO(long isbn, String title, String subtitle, String author, String publishing, Date year) {
         this.isbn = isbn;
         this.subtitle = subtitle;
         this.title = title;
@@ -34,11 +34,11 @@ public class BooksDTO {
         yearPubli = book.getYearPubli();
     }
 
-    public int getIsbn() {
+    public long getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(long isbn) {
         this.isbn = isbn;
     }
 

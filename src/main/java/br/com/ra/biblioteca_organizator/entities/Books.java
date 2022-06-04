@@ -17,7 +17,7 @@ import br.com.ra.biblioteca_organizator.dto.BooksDTO;
 public class Books implements Serializable {
 
     @Id
-    private int isbn;
+    private long isbn;
     private String title;
     private String subtitle;
     private String author;
@@ -40,7 +40,7 @@ public class Books implements Serializable {
     }
 
     public Books(
-            int isbn,
+            long isbn,
             String title,
             String subtitle,
             String author,
@@ -54,11 +54,11 @@ public class Books implements Serializable {
         this.yearPubli = yearPubli;
     }
 
-    public int getIsbn() {
+    public long getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(int isbn) {
+    public void setIsbn(long isbn) {
         this.isbn = isbn;
     }
 
