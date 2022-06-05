@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.ra.biblioteca_organizator.dto.GenrersDTO;
@@ -26,7 +27,7 @@ public class GenrersController {
     }
 
     @GetMapping(value = "/{id}")
-    public GenrersDTO findById(Long id) {
+    public GenrersDTO findById(@PathVariable Long id) {
         return services.findById(id);
     }
 
