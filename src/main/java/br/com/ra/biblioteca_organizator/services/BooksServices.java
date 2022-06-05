@@ -35,7 +35,7 @@ public class BooksServices {
     }
 
     @Transactional(readOnly = true)
-    public BooksDTO findByIsbn(Integer isbn) {
+    public BooksDTO findByIsbn(long isbn) {
         Books result = repository.findByIsbn(isbn);
         BooksDTO dto = new BooksDTO(result);
         return dto;
