@@ -1,7 +1,6 @@
 package br.com.ra.biblioteca_organizator.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,12 +16,12 @@ import br.com.ra.biblioteca_organizator.dto.BooksDTO;
 public class Books implements Serializable {
 
     @Id
-    private long isbn;
+    private String isbn;
     private String title;
     private String subtitle;
     private String author;
     private String publishing;
-    private Date yearPubli;
+    private int yearPubli;
 
     @OneToMany(mappedBy = "books")
     private Set<BooksGenrers> genrers = new HashSet<>();
@@ -40,12 +39,12 @@ public class Books implements Serializable {
     }
 
     public Books(
-            long isbn,
+            String isbn,
             String title,
             String subtitle,
             String author,
             String publishing,
-            Date yearPubli) {
+            int yearPubli) {
         this.isbn = isbn;
         this.title = title;
         this.subtitle = subtitle;
@@ -54,11 +53,11 @@ public class Books implements Serializable {
         this.yearPubli = yearPubli;
     }
 
-    public long getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(long isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
@@ -94,11 +93,11 @@ public class Books implements Serializable {
         this.publishing = publishing;
     }
 
-    public Date getYearPubli() {
+    public int getYearPubli() {
         return yearPubli;
     }
 
-    public void setYearPubli(Date yearPubli) {
+    public void setYearPubli(int yearPubli) {
         this.yearPubli = yearPubli;
     }
 

@@ -1,22 +1,20 @@
 package br.com.ra.biblioteca_organizator.dto;
 
-import java.util.Date;
-
 import br.com.ra.biblioteca_organizator.entities.Books;
 
 public class BooksDTO {
 
-    private long isbn;
+    private String isbn;
     private String title;
     private String subtitle;
     private String author;
     private String publishing;
-    private Date yearPubli;
+    private int yearPubli;
 
     public BooksDTO() {
     }
 
-    public BooksDTO(long isbn, String title, String subtitle, String author, String publishing, Date year) {
+    public BooksDTO(String isbn, String title, String subtitle, String author, String publishing, int year) {
         this.isbn = isbn;
         this.subtitle = subtitle;
         this.title = title;
@@ -34,11 +32,11 @@ public class BooksDTO {
         yearPubli = book.getYearPubli();
     }
 
-    public long getIsbn() {
+    public String getIsbn() {
         return isbn;
     }
 
-    public void setIsbn(long isbn) {
+    public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
 
@@ -74,11 +72,11 @@ public class BooksDTO {
         this.title = title;
     }
 
-    public Date getYearPubli() {
+    public int getYearPubli() {
         return yearPubli;
     }
 
-    public void setYearPubli(Date year) {
+    public void setYearPubli(int year) {
         this.yearPubli = year;
     }
 

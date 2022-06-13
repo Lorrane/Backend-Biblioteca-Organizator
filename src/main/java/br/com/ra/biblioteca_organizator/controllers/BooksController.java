@@ -26,7 +26,7 @@ public class BooksController {
     }
 
     @GetMapping(value = "/{isbn}")
-    public BooksDTO findByIsbn(@PathVariable Integer isbn) {
+    public BooksDTO findByIsbn(@PathVariable String isbn) {
         return services.findByIsbn(isbn);
     }
 

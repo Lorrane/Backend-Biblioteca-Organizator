@@ -8,7 +8,7 @@ import br.com.ra.biblioteca_organizator.entities.Books;
 
 public interface BooksRepository extends JpaRepository<Books, Integer> {
 
-    Books findByIsbn(long isbn);
+    Books findByIsbn(String isbn);
 
     List<Books> findByTitle(String title);
 
